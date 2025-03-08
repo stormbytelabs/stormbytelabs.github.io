@@ -39,40 +39,49 @@
             border-radius: 10px;
         }
 
-        .games {
+        body {
+            margin: 0;
+        }
+        .menu-overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #000000;
+            overflow-x: hidden;
+            transition: 0.5s;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
+            flex-direction: column;
         }
-        
-        .game-card {
-            background-color: #111;
-            max-width: 275px;
+        .menu-overlay a {
             padding: 15px;
-            text-align: center;
+            text-decoration: none;
+            font-size: 36px;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
         }
-        
-        .game-card h3 {
-            margin: 10px 0;
+        .menu-overlay a:hover {
+            color: #007fff;
         }
-
-        .game-card img {
-            width: 100%;
-        }
-        
-        .view-button {
-            background-color: #fff;
-            color: #000;
-            border: none;
-            padding: 10px;
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 40px;
+            color: white;
             cursor: pointer;
-            font-weight: 700;
         }
-
-        .view-button:hover {
-            background-color: #757575;
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: black;
         }
     </style>
 </head>
@@ -80,24 +89,23 @@
     <section class="hero">
         <div class="overlay">
             <img src="assets/logo.png" alt="Logo" class="logo">
+            <span class="menu-btn" onclick="openNav()">&#9776; Open Menu</span>
         </div>
     </section>
-
-    <h1>Explore Our Games</h1>
-    <div class="games">
-        <div class="game-card">
-            <img src="assets/striker-arena.png">
-            <h3>Striker Arena</h3>
-            <button class="view-button">Learn More</button>
-        </div>
+    <div id="myNav" class="menu-overlay">
+        <span class="close-btn" onclick="closeNav()">&times;</span>
+        <a href="#">Games</a>
+        <a href="#">Blog</a>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
     </div>
-
-    <footer>
-        <br>
-        <hr>
-        <br>
-        <p>© 2025 Stormbyte Labs</p>
-        <br>
-    </footer>
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
 </body>
 </html>
